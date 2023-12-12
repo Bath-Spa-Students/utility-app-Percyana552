@@ -35,9 +35,10 @@ for category, category_items in items.items():
     for item in category_items:
         print(f"Code: {item['code']}, Name: {item['name']}, Price: {item['price']}, Stock: {item['stock']}")
 
-user_item_code = int(input("Enter the code of the item you want to buy (Enter 0 to exit or 00 to add more items):"))
-item = None
-    
+user_item_code =int(input("Enter code (Enter 0 to Exit or 00 to add more items:)")) 
+
+# here we are going to write vending machine code.
+num_vending_machine=8
 while user_item_code != 0:
     item = None
     for category in items.values():
@@ -51,19 +52,33 @@ while user_item_code != 0:
     if item:
         if item['stock'] > 0:
             print(f"Wonderful, {item['name']} will cost you {item['price']} AED, stock left: {item['stock']}")
-            user_money = int(input(f"Enter {item['price']} AED to purchase: "))
-            if user_money >= item['price']:
+            payment_method = input("Enter 2  if you would love to pay by cash or 3 if would like to pay by credit card: ")
+            if payment_method == 3:
+                print(" executing  credit  trasction ...")
+                # here you would add credit card password
+                print(" your payment is sucessful!")
+            else:
+                user_money = int(input(f"Enter {item['price']} AED to buy : "))
+                while user_money < item['price']:
+                    print("You don't have enough money for purchase this item.")
+                    add_money = int(input(f"Please enter to add more money {item['price'] - user_money} AED to buy: "))
+                    user_money += add_money
                 change = user_money - item['price']
                 item['stock'] -= 1
                 print(f"Thank you for purchase here is your {item['name']}. Stock left:{item['stock']},your change is {change}")
-            else:
-                print("You don't have enough money for this item.")
         else:
             print("Sorry, this item is out of stock.")
     else:
         print("The item code you entered doesn't exist.")
 
-    user_item_code = int(input("Enter code (Enter 0 to Exit or 00 to add more items:)"))
+    print("\ another item you would like to buy:")
+    for category, category_items in items.items():
+        for item in category_items:
+            print(f"Code: {item['code']}, Name: {item['name']}, Price: {item['price']}, Stock: {item['stock']}")
+
+    print(f"\n There are {num_vending_machine} vending machines available.")
+
+user_item_code = int(input("Enter code (Enter 0 to Exit or 00 to add more items:)"))
     
 #  first you should make list in a way to give output the suggestios to the user.
 
@@ -95,3 +110,4 @@ if item:
     suggestion = suggestions.get(item['code'])
     if suggestion:
         print(f"\n I would recommend {suggestion} to go with your {item['name']}")
+        
