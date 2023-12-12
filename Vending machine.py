@@ -1,3 +1,4 @@
+# make a list of items that  vending machine should display
 items = {
     "drinks": [
         {'code': 1, 'name': 'pepsi', 'price': 8, 'stock': 10},
@@ -21,7 +22,7 @@ items = {
         {'code': 16, 'name': 'cookies', 'price': 2, 'stock': 10},
         {'code': 17, 'name': 'cake', 'price': 10, 'stock': 15}
     ],
-    "coffee": [
+      "coffee": [
         {'code': 18, 'name': 'Espresso', 'price': 11, 'stock': 12},
         {'code': 19, 'name': 'Latte', 'price': 19, 'stock': 11},
         {'code': 20, 'name': 'cappuccino', 'price': 5, 'stock': 13},
@@ -36,7 +37,9 @@ for category, category_items in items.items():
 
 user_item_code = int(input("Enter the code of the item you want to buy (Enter 0 to exit or 00 to add more items):"))
 item = None
+    
 while user_item_code != 0:
+    item = None
     for category in items.values():
         for i in category:
             if user_item_code == i['code']:
@@ -46,13 +49,22 @@ while user_item_code != 0:
             break
 
     if item:
-        print(f"Wonderful, {item['name']} will cost you {item['price']} AED, stock left: {item['stock']}")
-        user_money = int(input(f"Enter {item['price']} AED to purchase: "))
-        if user_money >= item['price']:
-            change = user_money - item['price']
-            item['stock'] -= 1
-            print(f"Thank you for purchase here is your {item['name']}. Stock left:{item['stock']},your change is {change}")
+        if item['stock'] > 0:
+            print(f"Wonderful, {item['name']} will cost you {item['price']} AED, stock left: {item['stock']}")
+            user_money = int(input(f"Enter {item['price']} AED to purchase: "))
+            if user_money >= item['price']:
+                change = user_money - item['price']
+                item['stock'] -= 1
+                print(f"Thank you for purchase here is your {item['name']}. Stock left:{item['stock']},your change is {change}")
+            else:
+                print("You don't have enough money for this item.")
+        else:
+            print("Sorry, this item is out of stock.")
+    else:
+        print("The item code you entered doesn't exist.")
+
     user_item_code = int(input("Enter code (Enter 0 to Exit or 00 to add more items:)"))
+    
 #  first you should make list in a way to give output the suggestios to the user.
 
 suggestions = {
