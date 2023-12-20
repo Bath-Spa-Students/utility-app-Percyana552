@@ -30,7 +30,7 @@ items = {
     ] 
 }
 
-print("Welcome to Petra's vending machine")
+print("Welcome to Petras' vending machine")
 for category, category_items in items.items():
     print(category)
     for item in category_items:
