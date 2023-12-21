@@ -11,22 +11,22 @@ items = {
     ],
     "snacks": [
         {'code':8, 'name': 'pringles', 'price': 16, 'stock': 25},
-        {'code':10 , 'name': 'chips', 'price': 7, 'stock': 17},
-        {'code':9 , 'name': 'salted cashews', 'price': 25, 'stock': 16}
+        {'code':9 , 'name': 'chips', 'price': 7, 'stock': 17},
+        {'code':10, 'name': 'salted cashews', 'price': 25, 'stock': 16}
     ],
     "sweets": [
         {'code': 11, 'name': 'roll cake', 'price': 20, 'stock': 5},
         {'code': 12, 'name': 'cupcake', 'price': 3, 'stock': 4},
         {'code': 13, 'name': 'Donuts', 'price': 9, 'stock': 13},
         {'code': 14, 'name': 'Muffins', 'price': 17, 'stock': 10},
-        {'code': 16, 'name': 'cookies', 'price': 2, 'stock': 10},
-        {'code': 17, 'name': 'cake', 'price': 10, 'stock': 15}
+        {'code': 15, 'name': 'cookies', 'price': 2, 'stock': 10},
+        {'code': 16, 'name': 'cake', 'price': 10, 'stock': 15}
     ],
       "coffee": [
-        {'code': 18, 'name': 'Espresso', 'price': 11, 'stock': 12},
-        {'code': 19, 'name': 'Latte', 'price': 19, 'stock': 11},
-        {'code': 20, 'name': 'cappuccino', 'price': 5, 'stock': 13},
-        {'code': 21, 'name': 'Americano', 'price': 14, 'stock': 2}
+        {'code': 17, 'name': 'Espresso', 'price': 11, 'stock': 12},
+        {'code': 18, 'name': 'Latte', 'price': 19, 'stock': 11},
+        {'code': 19, 'name': 'cappuccino', 'price': 5, 'stock': 13},
+        {'code': 20, 'name': 'Americano', 'price': 14, 'stock': 2}
     ] 
 }
 
@@ -35,7 +35,6 @@ for category, category_items in items.items():
     print(category)
     for item in category_items:
         print(f"Code: {item['code']}, Name: {item['name']}, Price: {item['price']}, Stock: {item['stock']}")
-
 user_item_code = int(input("Enter the code of the item you want to buy (Enter 0 to exit or 00 to  add more items):"))
 # vending machine-code
 while user_item_code != 0:
@@ -51,7 +50,7 @@ while user_item_code != 0:
     if item:
         if item['stock'] > 0:
             print(f"Wonderful, {item['name']} will cost you {item['price']} AED, stock left: {item['stock']}")
-            payment_method = input("Enter '2' if you would love to pay by cash or '3' if would like to pay by credit card: ")
+            payment_method = input("Enter '2' if you would love to pay by cash or '3' if would like to pay by credit card: ") # payment method
             if payment_method == '3':
                 user_money = int(input(f"Enter the amount you would like to pay with your credit card: "))
                 while user_money < item['price']:
@@ -96,10 +95,10 @@ suggestions = {
     14: "juice",
     15: "Latte",
     16: "Espresso",
-    18: "Muffins",
-    19: "roll cake",
-    20: "cupcake",
-    21: "Muffins"
+    17: "Muffins",
+    18: "roll cake",
+    19: "cupcake",
+    20: "Muffins"
 }
 
 # my vending machine suggestions-code.
